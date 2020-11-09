@@ -1,0 +1,101 @@
+<style>
+  .toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: #1976d2;
+    color: white;
+    font-weight: 600;
+  }
+
+  .toolbar img {
+    margin: 0 16px;
+  }
+</style>
+
+<div class="toolbar" role="banner">
+  <img
+    width="40"
+    alt="Angular Logo"
+    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
+  />
+  <h1>Angular Form Task</h1>
+</div>
+<hr />
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h3>User Registration</h3>
+        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label>Name</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="name"
+              placeholder="Enter your name"
+              required 
+            />
+          </div>
+          <div class="form-group">
+            <label>Gender</label>
+            <div>
+              <input
+                id="male"
+                type="radio"
+                value="male"
+                name="gender"
+                formControlName="gender"
+                required
+              />
+              <label for="male">Male</label>
+            </div>
+            <div>
+              <input
+                id="female"
+                type="radio"
+                value="female"
+                name="gender"
+                formControlName="gender"
+                required
+              />
+              <label for="female">Female</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input
+              type="text"
+              formControlName="emailid"
+              class="form-control"
+              placeholder="Enter your EmailID"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label>Phone No.</label>
+            <input
+              type="text"
+              formControlName="phoneno"
+              class="form-control"
+              placeholder="Enter your phone no."
+              required
+            />
+          </div>
+          <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-container *ngIf="isSubmitted">
+  <ul class="list-group" *ngFor="let regis of registration">
+    <li class="list-group-item">{{ regis[0] }}: {{ regis[1] }}</li>
+  </ul>
+</ng-container>
